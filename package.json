@@ -1,9 +1,16 @@
 {
   "name": "mark-agent-readiness-kit",
   "version": "0.1.0",
-  "private": true,
   "description": "MARK audits whether a product website is ready for AI agents to discover, understand, and call.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WillSuo-Github/mark-agent-readiness-kit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/WillSuo-Github/mark-agent-readiness-kit/issues"
+  },
+  "homepage": "https://github.com/WillSuo-Github/mark-agent-readiness-kit#readme",
   "keywords": [
     "ai-agents",
     "llms.txt",
