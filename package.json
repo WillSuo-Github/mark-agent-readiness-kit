@@ -1,6 +1,6 @@
 {
   "name": "mark-agent-readiness-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "MARK audits whether a product website is ready for AI agents to discover, understand, and call.",
   "type": "module",
   "repository": {
@@ -31,6 +31,7 @@
     "src/"
   ],
   "bin": {
+    "mark-agent-readiness-kit": "bin/mark-audit.mjs",
     "mark-audit": "bin/mark-audit.mjs"
   },
   "scripts": {
