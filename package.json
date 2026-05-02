@@ -31,7 +31,7 @@
     "src/"
   ],
   "bin": {
-    "mark-audit": "./bin/mark-audit.mjs"
+    "mark-audit": "bin/mark-audit.mjs"
   },
   "scripts": {
     "audit": "node ./bin/mark-audit.mjs",
