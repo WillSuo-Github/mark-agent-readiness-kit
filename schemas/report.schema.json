@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mark.local/schemas/report.schema.json",
+  "title": "MARK Audit Report",
+  "type": "object",
+  "required": [
+    "product",
+    "version",
+    "profile",
+    "auditedAt",
+    "target",
+    "score",
+    "grade",
+    "categoryScores",
+    "categoryMaxScores",
+    "summary",
+    "recommendations",
+    "findings",
+    "evidence",
+    "analyses"
+  ],
+  "properties": {
+    "product": {
+      "const": "MARK"
+    },
+    "version": {
+      "type": "string"
+    },
+    "profile": {
+      "enum": ["api", "docs", "content"]
+    },
+    "auditedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target": {
+      "type": "string",
+      "format": "uri"
+    },
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "grade": {
+      "enum": ["A", "B", "C", "D", "F"]
+    },
+    "categoryScores": {
+      "$ref": "#/$defs/categoryScores"
+    },
+    "categoryMaxScores": {
+      "$ref": "#/$defs/categoryScores"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "recommendations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "severity", "title", "detail"],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "severity": {
+            "enum": ["low", "medium", "high"]
+          },
+          "title": {
+            "type": "string"
+          },
+          "detail": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["key", "label", "url", "status"],
+        "properties": {
+          "key": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "analyses": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "categoryScores": {
+      "type": "object",
+      "required": ["discoverability", "agentContent", "capabilities", "trustAndAuth"],
+      "properties": {
+        "discoverability": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "agentContent": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "capabilities": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "trustAndAuth": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

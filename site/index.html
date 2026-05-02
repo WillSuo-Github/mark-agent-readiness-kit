@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MARK Agent Readiness Audit</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <div class="intro">
+          <div>
+            <p class="eyebrow">Machine Agent Readiness Kit</p>
+            <h1>MARK</h1>
+            <p class="lede">Private readiness audits for teams that need AI agents to discover, understand, and call their product without scraping guesswork.</p>
+          </div>
+          <img class="signal" src="./mark-product-signal.svg" alt="">
+        </div>
+
+        <div class="command-row" aria-label="CLI command">
+          <code>npm run audit -- https://example.com --json --out report.json</code>
+          <button id="load-demo" type="button">Load demo</button>
+        </div>
+
+        <label class="input-panel" for="report-json">
+          <span>Paste MARK JSON report</span>
+          <textarea id="report-json" spellcheck="false" placeholder='{"product":"MARK","score":72,...}'></textarea>
+        </label>
+      </section>
+
+      <section class="results" aria-live="polite">
+        <div class="score-panel">
+          <div>
+            <span class="label">Overall</span>
+            <strong id="score">--</strong>
+          </div>
+          <span id="grade" class="grade">--</span>
+        </div>
+
+        <p id="summary" class="summary">Run the CLI and paste the JSON report here, or load the demo to inspect the output shape.</p>
+
+        <div id="categories" class="categories"></div>
+
+        <div class="section-block">
+          <h2>Recommendations</h2>
+          <ol id="recommendations"></ol>
+        </div>
+
+        <div class="section-block">
+          <h2>Evidence</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Signal</th>
+                  <th>Status</th>
+                  <th>URL</th>
+                </tr>
+              </thead>
+              <tbody id="evidence"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

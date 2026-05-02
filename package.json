@@ -1,0 +1,40 @@
+{
+  "name": "mark-agent-readiness-kit",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MARK audits whether a product website is ready for AI agents to discover, understand, and call.",
+  "type": "module",
+  "keywords": [
+    "ai-agents",
+    "llms.txt",
+    "mcp",
+    "openapi",
+    "developer-tools",
+    "ci"
+  ],
+  "files": [
+    "action.yml",
+    "bin/",
+    "CHANGELOG.md",
+    "docs/",
+    "examples/",
+    "README.md",
+    "schemas/",
+    "site/",
+    "src/"
+  ],
+  "bin": {
+    "mark-audit": "./bin/mark-audit.mjs"
+  },
+  "scripts": {
+    "audit": "node ./bin/mark-audit.mjs",
+    "export:standalone": "node ./scripts/export-standalone-release.mjs",
+    "qa:ui": "node ./scripts/capture-ui-qa.mjs",
+    "sample:validation": "node ./scripts/run-validation-sample.mjs",
+    "test": "node --test",
+    "check": "node --check ./src/audit.mjs && node --check ./src/cli.mjs && node --check ./bin/mark-audit.mjs && node --check ./scripts/run-validation-sample.mjs && node --check ./scripts/capture-ui-qa.mjs && node --check ./scripts/export-standalone-release.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "target": "https://docs.example.com",
+  "profile": "docs",
+  "format": "markdown",
+  "output": "mark-report.md",
+  "failUnder": 70,
+  "timeoutMs": 8000
+}

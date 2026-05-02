@@ -1,0 +1,50 @@
+name: MARK Agent Readiness Audit
+description: Audit whether a product website exposes agent-readable discovery, content, capability, and auth signals.
+inputs:
+  target:
+    description: URL or hostname to audit.
+    required: false
+    default: ""
+  config:
+    description: Optional MARK config file path.
+    required: false
+    default: ""
+  fail-under:
+    description: Optional score threshold. The action fails when the MARK score is lower.
+    required: false
+    default: "0"
+  profile:
+    description: Audit profile: api, docs, or content.
+    required: false
+    default: api
+  output:
+    description: Output markdown report path.
+    required: false
+    default: mark-report.md
+runs:
+  using: composite
+  steps:
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+    - name: Run MARK
+      shell: bash
+      run: |
+        args=()
+        if [ -n "${{ inputs.config }}" ]; then
+          args+=(--config "${{ inputs.config }}")
+        fi
+        if [ -n "${{ inputs.target }}" ]; then
+          args+=("${{ inputs.target }}")
+        fi
+        if [ -n "${{ inputs.profile }}" ]; then
+          args+=(--profile "${{ inputs.profile }}")
+        fi
+        if [ -n "${{ inputs.output }}" ]; then
+          args+=(--markdown --out "${{ inputs.output }}")
+        fi
+        if [ -n "${{ inputs.fail-under }}" ]; then
+          args+=(--fail-under "${{ inputs.fail-under }}")
+        fi
+        node "$GITHUB_ACTION_PATH/bin/mark-audit.mjs" "${args[@]}"

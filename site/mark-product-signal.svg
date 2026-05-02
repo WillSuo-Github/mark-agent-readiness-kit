@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title">
+  <title id="title">MARK agent readiness signal</title>
+  <rect width="160" height="160" rx="18" fill="#f3f5f0"/>
+  <path d="M28 108h104" stroke="#1f2421" stroke-width="6" stroke-linecap="round"/>
+  <path d="M38 52h42" stroke="#2468d8" stroke-width="8" stroke-linecap="round"/>
+  <path d="M38 76h64" stroke="#1f8a5b" stroke-width="8" stroke-linecap="round"/>
+  <path d="M38 100h28" stroke="#b46613" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="114" cy="54" r="17" fill="#ffffff" stroke="#1f2421" stroke-width="5"/>
+  <path d="M126 66l18 18" stroke="#1f2421" stroke-width="7" stroke-linecap="round"/>
+  <path d="M108 54l5 5 10-12" fill="none" stroke="#1f8a5b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
