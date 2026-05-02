@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.2 - 2026-05-02
+
+Public onboarding copy fix.
+
+- Updated CLI help examples to use the published `npx mark-agent-readiness-kit` path.
+- Updated the report viewer and CI quickstart command examples for npm users.
+- Removed stale package-publication gate language from public docs.
+
 ## 0.1.1 - 2026-05-02
 
 Post-publish activation fix.

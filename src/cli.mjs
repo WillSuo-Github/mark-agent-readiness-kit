@@ -11,9 +11,9 @@ export function usage() {
   mark-audit --config mark.config.json
 
 Examples:
-  npm run audit -- https://example.com --profile api
-  npm run audit -- docs.example.com --profile docs --json --out report.json
-  npm run audit -- --config mark.config.json
+  npx mark-agent-readiness-kit https://example.com --profile api
+  mark-audit docs.example.com --profile docs --json --out report.json
+  mark-audit --config mark.config.json
 `;
 }
 

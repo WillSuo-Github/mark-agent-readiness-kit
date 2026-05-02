@@ -27,13 +27,13 @@ Supported keys:
 ## 2. Run locally
 
 ```bash
-npm run audit -- --config mark.config.json
+npx mark-agent-readiness-kit --config mark.config.json
 ```
 
 CLI flags override config values:
 
 ```bash
-npm run audit -- --config mark.config.json --profile api --json --out report.json
+npx mark-agent-readiness-kit --config mark.config.json --profile api --json --out report.json
 ```
 
 ## 3. Run in GitHub Actions
@@ -47,4 +47,4 @@ npm run audit -- --config mark.config.json --profile api --json --out report.jso
     output: mark-report.md
 ```
 
-The JSON report shape is documented in [report.schema.json](/Users/willsuo/files/Github/Mark/Mark-2/schemas/report.schema.json).
+The JSON report shape is documented in [report.schema.json](../schemas/report.schema.json).

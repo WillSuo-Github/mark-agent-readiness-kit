@@ -37,4 +37,4 @@ With a committed `mark.config.json`:
     config: mark.config.json
 ```
 
-This wrapper is intentionally simple. Public marketplace publication, package registry publication, and branded launch copy remain approval-gated.
+This wrapper is intentionally simple. Public marketplace publication and branded launch copy remain approval-gated.
