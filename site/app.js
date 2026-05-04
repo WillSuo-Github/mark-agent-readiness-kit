@@ -37,8 +37,8 @@ const demoReport = {
   summary: "Partial readiness. Agents can discover some context, but agent-readable content will limit reliable use.",
   recommendations: [
     "Improve /llms.txt structure with a clear H1, one-paragraph summary, sections, and high-signal links.",
-    "Publish an OpenAPI document at a stable URL and link to it from docs or /llms.txt.",
-    "If the product has actions or private data, expose an MCP server card or documented MCP endpoint."
+    "Publish OpenAPI at a stable well-known or root URL, link it from docs/homepage, and include it in /llms.txt as backup discovery.",
+    "Publish MCP-style or agent metadata at a stable .well-known path, link it from docs/homepage, and include it in /llms.txt as backup discovery."
   ],
   evidence: [
     { label: "robots.txt", status: "ok 200", url: "https://example.dev/robots.txt" },

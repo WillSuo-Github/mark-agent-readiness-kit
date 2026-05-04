@@ -59,8 +59,8 @@ const RECOMMENDATION_COPY = {
   sitemap: "Expose sitemap.xml so agents can discover canonical docs, pricing, changelog, and support pages.",
   llms: "Add /llms.txt with concise product context, canonical docs links, API references, examples, and constraints.",
   llmsQuality: "Improve /llms.txt structure with a clear H1, one-paragraph summary, sections, and high-signal links.",
-  openapi: "If the product exposes a public API, publish an OpenAPI document at a stable URL and link to it from docs or /llms.txt.",
-  mcp: "If the product has actions or private data, expose an MCP server card or documented MCP endpoint.",
+  openapi: "If the product exposes a public API, publish OpenAPI at a stable well-known or root URL, link it from docs/homepage, and include it in /llms.txt as backup discovery.",
+  mcp: "If the product has actions or private data, publish MCP-style or agent metadata at a stable .well-known path, link it from docs/homepage, and include it in /llms.txt as backup discovery.",
   oauth: "Publish OAuth metadata so agents can discover authorization flows without scraping docs.",
   jsonld: "Add JSON-LD or equivalent structured data on key pages to reduce extraction ambiguity.",
   https: "Serve the target over HTTPS; agent integrations should not bootstrap from plain HTTP."
@@ -302,6 +302,8 @@ export function analyzeHome(result) {
     hasJsonLd: /application\/ld\+json/i.test(body),
     linksLlmsTxt: /llms\.txt/i.test(body) || /llms\.txt/i.test(linkHeader),
     linksOpenApi: /openapi\.(json|yaml)|swagger/i.test(body) || /openapi/i.test(linkHeader),
+    linksAgentMetadata: /\.well-known\/(?:mcp|agent|api-catalog)|mcp\.json|server-card|agent\.json|api-catalog|ai-plugin\.json/i.test(body)
+      || /mcp\.json|server-card|agent\.json|api-catalog|ai-plugin\.json/i.test(linkHeader),
     contentType
   };
 }
@@ -477,6 +479,9 @@ export function scoreAudit(targetUrl, endpoints, analyses, options = {}) {
 
   if (analyses.mcp.present) {
     rawCategoryScores.capabilities += analyses.mcp.mentionsTools ? 8 : 6;
+    if (analyses.home.linksAgentMetadata) {
+      rawCategoryScores.capabilities += 2;
+    }
   } else {
     addFinding("mcp", profile === "api" ? "medium" : "low", "No MCP or agent card detected", "If actions matter, an agent-native server descriptor would reduce integration friction.");
   }

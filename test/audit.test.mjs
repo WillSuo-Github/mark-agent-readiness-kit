@@ -1,6 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {
+  analyzeHome,
   analyzeLlms,
   buildAuditFromEndpointResults,
   generateMarkdownReport,
@@ -34,6 +35,17 @@ Legacy endpoints are not recommended.`;
   assert.equal(analysis.present, true);
   assert.equal(analysis.h1Count, 1);
   assert.ok(analysis.qualityScore >= 9);
+});
+
+test("analyzeHome detects capability metadata link hints", () => {
+  const home = analyzeHome({
+    ok: true,
+    headers: { link: '<https://example.com/.well-known/mcp.json>; rel="service-desc"' },
+    body: '<html><a href="/openapi.yaml">OpenAPI</a><a href="/.well-known/agent.json">Agent card</a></html>'
+  });
+
+  assert.equal(home.linksOpenApi, true);
+  assert.equal(home.linksAgentMetadata, true);
 });
 
 test("buildAuditFromEndpointResults scores a complete fixture above partial readiness", () => {

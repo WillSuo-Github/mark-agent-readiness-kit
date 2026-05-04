@@ -33,6 +33,15 @@ MARK scores readiness as a practical heuristic, not as certification.
 - A docs site may score poorly under `api` even when `docs` is the right profile.
 - A site can be intentionally private or non-actionable; in that case, missing OpenAPI or MCP metadata may be acceptable.
 
+## Capability Metadata Placement
+
+For API or action-oriented products, MARK prefers stable machine-readable locations before deep crawling:
+
+- OpenAPI: `/.well-known/openapi.json`, `/openapi.json`, `/openapi.yaml`, or another clearly documented stable URL.
+- MCP-style or agent metadata: `/.well-known/mcp.json`, `/.well-known/mcp/server-card.json`, `/.well-known/agent.json`, or `/.well-known/api-catalog`.
+- Homepage or docs entrypoint links should expose these files so tools can find them quickly.
+- `/llms.txt` should also link to the same metadata, but MARK treats that as backup discovery rather than the only entrypoint.
+
 ## Certification
 
 MARK does not claim official conformance to AgentReady, MCP, `llms.txt`, OpenAPI, or OAuth standards. It is a private readiness audit and remediation checklist.

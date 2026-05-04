@@ -11,6 +11,8 @@ It checks for the signals an agent needs before it can safely reason about or ca
 
 MARK does not claim official conformance to AgentReady, MCP, or `llms.txt`. It is a private, CI-friendly readiness audit and remediation checklist.
 
+For capability metadata, MARK checks stable well-known/root URLs first, then homepage/docs link hints. `/llms.txt` is useful backup discovery, but it should not be the only path to OpenAPI or MCP-style metadata for action-oriented products.
+
 ## Run an audit
 
 From npm without installing:

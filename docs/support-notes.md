@@ -46,6 +46,10 @@ The CLI fetches public URLs only and writes local reports. It does not collect t
 
 MARK weights the selected profile. Try `--profile docs` for documentation sites and `--profile content` for knowledge/reference sites. If the score is still low, inspect the recommendations and evidence table; HTML fallback rows often explain why a 200 status was not accepted as valid metadata.
 
+### Where should OpenAPI or MCP-style metadata live?
+
+Prefer stable well-known or root URLs that tools can check directly. For OpenAPI, MARK checks `/.well-known/openapi.json`, `/openapi.json`, and `/openapi.yaml`. For MCP-style or agent metadata, MARK checks `/.well-known/mcp.json`, `/.well-known/mcp/server-card.json`, `/.well-known/agent.json`, and `/.well-known/api-catalog`. Link those files from the homepage or docs entrypoint, and also include them in `/llms.txt` as backup discovery.
+
 ### Is this an official certification?
 
 No. MARK is a private readiness audit that composes practical signals from `llms.txt`, OpenAPI, MCP-style descriptors, OAuth metadata, and crawler policy. It should not be presented as official AgentReady, MCP, or `llms.txt` certification.
