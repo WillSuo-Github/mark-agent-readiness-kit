@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.1.3 - 2026-05-06
 
 Capability remediation wording and detection hardening.
 
