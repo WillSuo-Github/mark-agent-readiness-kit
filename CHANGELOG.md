@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+Capability remediation wording and detection hardening.
+
+- Clarified that OpenAPI should be published at a stable well-known or root URL, linked from docs/homepage, and included in `/llms.txt` as backup discovery.
+- Clarified that MCP-style or agent metadata should be published at a stable `.well-known` path, linked from docs/homepage, and included in `/llms.txt` as backup discovery.
+- Added homepage/docs link-hint detection for MCP-style and agent metadata.
+- Updated report viewer demo recommendations, scoring docs, support notes, and README copy to match this framing.
+
 ## 0.1.2 - 2026-05-02
 
 Public onboarding copy fix.
